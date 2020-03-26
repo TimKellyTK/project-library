@@ -12,8 +12,10 @@ function addBookToLibrary(object) {
 };
 
 function render(array) {
+    const grid = document.querySelector('.book-grid');
+    grid.innerHTML = '';
+
     for (const item of array) {
-        const grid = document.querySelector('.book-grid');
 
         // Book card
         const book = document.createElement('div');
@@ -85,6 +87,8 @@ function render(array) {
     };
 }
 
+// Show add new book form
+
 function showAddNewBook() {
     document.querySelector('.new-book-section').style.display = 'flex'
 }
@@ -100,10 +104,36 @@ function hideAddNewBook(){
 let closeBookBtn = document.querySelector('.close-new-book')
 closeBookBtn.addEventListener('click', () => hideAddNewBook())
 
+// Add new book to myLibrary array
+
+function addBook() {
+    let title = document.querySelector('#Title');
+    let author = document.querySelector('#Author');
+    let pages = document.querySelector('#Pages');
+
+    let newBook = new book(title.value, author.value, pages.value, false);
+    addBookToLibrary(newBook);
+    render(myLibrary);
+
+    title.value = '';
+    author.value = '';
+    pages.value = '';
+};
+
+let submitBookBtn = document.querySelector('.submit-button');
+submitBookBtn.addEventListener('click', () => {
+    addBook();
+    hideAddNewBook();
+});
+
+// Example books created in the DOM layer
+
 let timsBook = new book('The Mad History Of The Kelly Gang', 'Tim Kelly', 349, true);
 addBookToLibrary(timsBook);
 
 let paulsBook = new book('Why I Dropped My Beer To Catch A Football', 'Paul Kelly', 239, false);
-addBookToLibrary(paulsBook)
+addBookToLibrary(paulsBook);
 
-render(myLibrary)
+// Render books in DOM layer
+
+render(myLibrary);
