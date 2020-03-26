@@ -110,14 +110,16 @@ function addBook() {
     let title = document.querySelector('#Title');
     let author = document.querySelector('#Author');
     let pages = document.querySelector('#Pages');
+    let checkbox = document.querySelector('#reading-complete')
 
-    let newBook = new book(title.value, author.value, pages.value, false);
+    let newBook = new book(title.value, author.value, pages.value, checkbox.checked);
     addBookToLibrary(newBook);
     render(myLibrary);
 
     title.value = '';
     author.value = '';
     pages.value = '';
+    checkbox.checked = false;
 };
 
 let submitBookBtn = document.querySelector('.submit-button');
