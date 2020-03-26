@@ -85,6 +85,21 @@ function render(array) {
     };
 }
 
+function showAddNewBook() {
+    document.querySelector('.new-book-section').style.display = 'flex'
+}
+
+let newBookBtn = document.querySelector('.add-new-book')
+newBookBtn.addEventListener('click', () => showAddNewBook())
+
+
+function hideAddNewBook(){
+    document.querySelector('.new-book-section').style.display = 'none'
+}
+
+let closeBookBtn = document.querySelector('.close-new-book')
+closeBookBtn.addEventListener('click', () => hideAddNewBook())
+
 let timsBook = new book('The Mad History Of The Kelly Gang', 'Tim Kelly', 349, true);
 addBookToLibrary(timsBook);
 
@@ -92,4 +107,3 @@ let paulsBook = new book('Why I Dropped My Beer To Catch A Football', 'Paul Kell
 addBookToLibrary(paulsBook)
 
 render(myLibrary)
-
