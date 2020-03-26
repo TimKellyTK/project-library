@@ -4,7 +4,7 @@
 - Create the first functions to store book objects in the myLibrary array (DONE)
 - Create a render() function to loop through the myLibrary the book objects in the DOM layer (DONE)
 - Add javascript to hide and show the add new book section in the html (DONE)
-- Add javascript to take the user inputs and add objects to the myLibrary array and refresh the array
+- Add javascript to take the user inputs and add objects to the myLibrary array and refresh the array (DONE)
 - Add javascript to remove the book from the myLibrary and render() the page on button click
 - Add javascript to udpdate the books read status on the book prototype inheritance on button click
 - Store the myLibrary array to the localStorage

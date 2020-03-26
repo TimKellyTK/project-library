@@ -112,20 +112,22 @@ function addBook() {
     let pages = document.querySelector('#Pages');
     let checkbox = document.querySelector('#reading-complete')
 
-    let newBook = new book(title.value, author.value, pages.value, checkbox.checked);
-    addBookToLibrary(newBook);
-    render(myLibrary);
+    if (title.value && author.value && pages.value) {
+        let newBook = new book(title.value, author.value, pages.value, checkbox.checked);
+        addBookToLibrary(newBook);
+        render(myLibrary);
 
-    title.value = '';
-    author.value = '';
-    pages.value = '';
-    checkbox.checked = false;
-};
+        title.value = '';
+        author.value = '';
+        pages.value = '';
+        checkbox.checked = false;
+        hideAddNewBook();
+    }
+};  
 
 let submitBookBtn = document.querySelector('.submit-button');
 submitBookBtn.addEventListener('click', () => {
     addBook();
-    hideAddNewBook();
 });
 
 // Example books created in the DOM layer
