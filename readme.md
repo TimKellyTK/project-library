@@ -1,7 +1,7 @@
 # Instructions for the project
 
 # The next steps
-- Create the first functions to store book objects in the myLibrary array
+- Create the first functions to store book objects in the myLibrary array (DONE)
 - Create a render() function to display the book objects in the DOM layer
 - Add javascript to hide and show the add new book section in the html
 - Add javascript to take the user inputs and add objects to the myLibrary array and refresh the array
