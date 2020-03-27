@@ -15,11 +15,12 @@ function render(array) {
     const grid = document.querySelector('.book-grid');
     grid.innerHTML = '';
 
-    for (const item of array) {
+    for (const [index, item] of array.entries()) {
 
         // Book card
         const book = document.createElement('div');
         book.classList.add('book');
+        book.setAttribute('data-value', index)
         grid.appendChild(book);                                
 
         // Gradient section
@@ -28,9 +29,7 @@ function render(array) {
 
         const removeBook = document.createElement('div');
         removeBook.classList.add('remove-book');
-        const removeX = document.createElement('div');
-        removeX.textContent = 'x';
-        removeBook.appendChild(removeX);
+        removeBook.textContent = 'x';
         gradient.appendChild(removeBook);
         book.appendChild(gradient);
         
@@ -138,6 +137,25 @@ addBookToLibrary(timsBook);
 let paulsBook = new book('Why I Dropped My Beer To Catch A Football', 'Paul Kelly', 239, false);
 addBookToLibrary(paulsBook);
 
+let allensBook = new book('Why I Bleep Bloop', 'Allen Elf', 238, false);
+addBookToLibrary(allensBook);
+
 // Render books in DOM layer
 
 render(myLibrary);
+
+// Delete book from myLibrary array
+
+const grid = document.querySelector('.book-grid');
+
+grid.addEventListener('click', deleteBook);
+
+function deleteBook(e) {
+    if (e.target.matches('.remove-book')) {
+        bookIndex = e.target.parentNode.parentNode.getAttribute('data-value');
+        myLibrary.splice(bookIndex, 1);
+        render(myLibrary);
+    }
+};
+
+// Article for adding cloned dom elements - https://pawelgrzybek.com/cloning-dom-nodes-and-handling-attached-events/
