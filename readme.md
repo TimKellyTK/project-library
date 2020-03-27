@@ -1,17 +1,17 @@
-# Instructions for the project
+From The Odin Project's [curriculum](https://www.theodinproject.com/courses/javascript/lessons/library).
 
-# The next steps
+# The steps to complete the project
 - Create the first functions to store book objects in the myLibrary array (DONE)
 - Create a render() function to loop through the myLibrary the book objects in the DOM layer (DONE)
 - Add javascript to hide and show the add new book section in the html (DONE)
 - Add javascript to take the user inputs and add objects to the myLibrary array and refresh the array (DONE)
 - Add javascript to remove the book from the myLibrary and render() the page on button click (DONE)
 - Add javascript to udpdate the books read status on the book prototype inheritance on button click (DONE)
-- Store the myLibrary array to the localStorage
-- Get the myLibrary array on page load and display this on the screen
-- Check if the myLibrary array exists before displaying it to make sure this doesn't break the website
-- General debugging
-- Clean up the code 
+- Store the myLibrary array to the localStorage (DONE)
+- Get the myLibrary array on page load and display this on the screen (DONE)
+- Check if the myLibrary array exists before displaying it to make sure this doesn't break the website (DONE)
+- General debugging (DONE)
+- Clean up the code (SKIPPED)
 
 # Notes from The Odin Project instructions
 - All the books objects are going to be stored in an array, so add a function that can take ths users input and store this information in the array
