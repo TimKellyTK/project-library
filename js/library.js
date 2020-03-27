@@ -122,25 +122,11 @@ function addBook() {
         checkbox.checked = false;
         hideAddNewBook();
     }
+    storeMyLibrary();
 };  
 
 let submitBookBtn = document.querySelector('.submit-button');
 submitBookBtn.addEventListener('click', addBook);
-
-// Example books created in the DOM layer
-
-let timsBook = new book('The Mad History Of The Kelly Gang', 'Tim Kelly', 349, true);
-addBookToLibrary(timsBook);
-
-let paulsBook = new book('Why I Dropped My Beer To Catch A Football', 'Paul Kelly', 239, false);
-addBookToLibrary(paulsBook);
-
-let allensBook = new book('Why I Bleep Bloop', 'Allen Elf', 238, false);
-addBookToLibrary(allensBook);
-
-// Render books in DOM layer
-
-render(myLibrary);
 
 // Delete book from myLibrary array
 
@@ -152,6 +138,7 @@ function deleteBook(e) {
     if (e.target.matches('.remove-book')) {
         bookIndex = e.target.parentNode.parentNode.getAttribute('data-value');
         myLibrary.splice(bookIndex, 1);
+        storeMyLibrary();
         render(myLibrary);
     }
 };
@@ -170,7 +157,31 @@ function toggleRead(e) {
         } else {
             bookObject.reading = false;
         }
-        
+
         render(myLibrary)
     }
 }
+
+// Example books created in the DOM layer
+
+let timsBook = new book('The Mad History Of The Kelly Gang', 'Tim Kelly', 349, true);
+addBookToLibrary(timsBook);
+
+let paulsBook = new book('Why I Dropped My Beer To Catch A Football', 'Paul Kelly', 239, false);
+addBookToLibrary(paulsBook);
+
+let allensBook = new book('Why I Bleep Bloop', 'Allen Elf', 238, false);
+addBookToLibrary(allensBook);
+
+// Local storage for books
+
+function storeMyLibrary () {
+    window.localStorage.setItem('user', JSON.stringify(myLibrary));
+}
+
+// Render books in DOM layer
+if (localStorage.length == 0) {
+    storeMyLibrary()
+}
+
+render(JSON.parse(window.localStorage.getItem('user')));
