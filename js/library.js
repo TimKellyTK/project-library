@@ -157,21 +157,10 @@ function toggleRead(e) {
         } else {
             bookObject.reading = false;
         }
-
-        render(myLibrary)
+        storeMyLibrary()
+        render(JSON.parse(window.localStorage.getItem('user')));
     }
 }
-
-// Example books created in the DOM layer
-
-let timsBook = new book('The Mad History Of The Kelly Gang', 'Tim Kelly', 349, true);
-addBookToLibrary(timsBook);
-
-let paulsBook = new book('Why I Dropped My Beer To Catch A Football', 'Paul Kelly', 239, false);
-addBookToLibrary(paulsBook);
-
-let allensBook = new book('Why I Bleep Bloop', 'Allen Elf', 238, false);
-addBookToLibrary(allensBook);
 
 // Local storage for books
 
@@ -181,7 +170,17 @@ function storeMyLibrary () {
 
 // Render books in DOM layer
 if (localStorage.length == 0) {
+    let timsBook = new book('The Mad History Of The Kelly Gang', 'Tim Kelly', 349, true);
+    addBookToLibrary(timsBook);
+
+    let paulsBook = new book('Why I Dropped My Beer To Catch A Football', 'Paul Kelly', 239, false);
+    addBookToLibrary(paulsBook);
+
+    let allensBook = new book('Why I Bleep Bloop', 'Allen Elf', 238, false);
+    addBookToLibrary(allensBook);
     storeMyLibrary()
+} else {
+    myLibrary = JSON.parse(window.localStorage.getItem('user'));
 }
 
 render(JSON.parse(window.localStorage.getItem('user')));
