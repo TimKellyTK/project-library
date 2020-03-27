@@ -93,7 +93,7 @@ function showAddNewBook() {
 }
 
 let newBookBtn = document.querySelector('.add-new-book')
-newBookBtn.addEventListener('click', () => showAddNewBook())
+newBookBtn.addEventListener('click', showAddNewBook)
 
 
 function hideAddNewBook(){
@@ -101,7 +101,7 @@ function hideAddNewBook(){
 }
 
 let closeBookBtn = document.querySelector('.close-new-book')
-closeBookBtn.addEventListener('click', () => hideAddNewBook())
+closeBookBtn.addEventListener('click', hideAddNewBook)
 
 // Add new book to myLibrary array
 
@@ -125,9 +125,7 @@ function addBook() {
 };  
 
 let submitBookBtn = document.querySelector('.submit-button');
-submitBookBtn.addEventListener('click', () => {
-    addBook();
-});
+submitBookBtn.addEventListener('click', addBook);
 
 // Example books created in the DOM layer
 
@@ -158,4 +156,21 @@ function deleteBook(e) {
     }
 };
 
-// Article for adding cloned dom elements - https://pawelgrzybek.com/cloning-dom-nodes-and-handling-attached-events/
+// Toggle finished and read status
+
+grid.addEventListener('click', toggleRead)
+
+function toggleRead(e) {
+    if (e.target.matches('.read-button')) {
+        bookIndex = e.target.parentNode.parentNode.getAttribute('data-value');
+        bookObject = myLibrary[bookIndex];
+
+        if(bookObject.reading === false) {
+            bookObject.reading = true;
+        } else {
+            bookObject.reading = false;
+        }
+        
+        render(myLibrary)
+    }
+}
